@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jelajah Darsana: Memahami Filsafat Hindu - Kelas XI SMA</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pink-soft: #FCE7F3;
+            --pink-pastel: #F9A8D4;
+            --pink-rose: #EC4899;
+            --pink-deep: #DB2777;
+            --pink-dark: #9D174D;
+            --pink-bg: #FFF7FB;
+            --white: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: var(--pink-bg);
+            color: #4A1833;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .primary-gradient {
+            background: linear-gradient(135deg, #F9A8D4 0%, #EC4899 50%, #9D174D 100%);
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #FFF7FB 0%, #FCE7F3 55%, #F9A8D4 100%);
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #F9A8D4 0%, #EC4899 55%, #9D174D 100%);
+            border-radius: 999px;
+            transition: width 0.6s ease;
+        }
+
+        .primary-button {
+            background: linear-gradient(135deg, #F9A8D4 0%, #EC4899 55%, #9D174D 100%);
+            color: #FFFFFF;
+            font-weight: 600;
+            border: none;
+            border-radius: 14px;
+            padding: 12px 24px;
+            cursor: pointer;
+            transition: opacity 0.2s ease, transform 0.1s ease;
+        }
+        .primary-button:hover {
+            opacity: 0.92;
+            transform: translateY(-1px);
+        }
+
+        .card-floral {
+            background: #FFFFFF;
+            border: 1px solid #FCE7F3;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px -2px rgba(219, 39, 119, 0.06);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- CONTAINER UTAMA APLIKASI -->
+    <div id="app" class="flex-1 flex flex-col">
+        <!-- Render dinamis via JavaScript -->
+    </div>
+
+    <script>
+        // --- DATA MATERI DAN KUIS ---
+        const courseData = {
+            modules: [
+                {
+                    id: 'pengantar',
+                    title: 'A. Pengantar Darsana 🪷',
+                    desc: 'Pengertian Darsana, makna filsafat, dan hubungannya dengan spiritualitas Hindu.',
+                    content: `
+                        <h3 class="text-2xl font-bold text-[#9D174D] mb-4">Pengantar Darsana 🪷</h3>
+                        <p class="mb-4">Kata <strong>Darsana</strong> berasal dari bahasa Sanskerta <em>दृश् (drś)</em> yang berarti "melihat" atau "pandangan". Dalam konteks filsafat Hindu, Darsana berarti <strong>pandangan tentang kebenaran (filsafat)</strong> atau cara pandang spiritual untuk mencapai realitas tertinggi.</p>
+                        <div class="bg-[#FFF7FB] border-l-4 border-[#EC4899] p-4 my-4 rounded-r-xl">
+                            <h4 class="font-semibold text-[#9D174D] mb-1">Makna & Urgensi: 🌸</h4>
+                            <p class="text-sm text-[#831843]">Mempelajari Darsana bukan sekadar teori akademis, melainkan melatih nalar kritis, memperkuat keyakinan (Sradha), dan membimbing perilaku etis (Budi Pekerti) dalam kehidupan sehari-hari.</p>
+                        </div>
+                        <h4 class="text-xl font-semibold text-[#831843] mt-6 mb-2">Hubungan Darsana dengan Pengetahuan & Spiritualitas</h4>
+                        <p>Darsana menjembatani antara pengetahuan intelektual (*Jnana*) dengan pengalaman langsung (*Anubhawa*). Filsafat Hindu menuntun manusia memahami hakikat hidup sehingga terbebas dari penderitaan (*Moksa*).</p>
+                    `
+                },
+                {
+                    id: 'sad_darsana_1',
+                    title: 'B1. Nyaya & Waisesika 🌺',
+                    desc: 'Sistem penalaran logis, epistemologi, serta kategori realitas dan unsur alam.',
+                    content: `
+                        <h3 class="text-2xl font-bold text-[#9D174D] mb-4">1. Nyaya (Logika & Epistemologi) 🌺</h3>
+                        <p class="mb-3">Didirikan oleh Rsi Gautama. Sistem ini menekankan pentingnya <strong>penalaran logis</strong> dan cara memperoleh pengetahuan yang benar (*Pramana*) yang terdiri atas Pratyaksa, Anumana, Upamana, dan Sabda.</p>
+                        
+                        <h3 class="text-2xl font-bold text-[#9D174D] mt-8 mb-4">2. Waisesika (Kategori Realitas) 🌷</h3>
+                        <p class="mb-3">Didirikan oleh Rsi Kanada. Sistem ini membahas tentang kategori objek fisik di alam semesta (*Padartha*) dan unsur-unsur dasar pembentuk materi terkecil (*Parmanu* / atom).</p>
+                        <div class="bg-[#FFF7FB] p-4 rounded-xl mt-4 border border-[#FCE7F3]">
+                            <span class="font-semibold text-[#9D174D]">Contoh Kontekstual: 🌸</span> Penggunaan metode ilmiah dan analisis data dalam kehidupan modern adalah wujud penerapan pola pikir Nyaya-Waisesika yang objektif.
+                        </div>
+                    `
+                },
+                {
+                    id: 'sad_darsana_2',
+                    title: 'B2. Samkhya & Yoga 🌸',
+                    desc: 'Dualisme prinsip Purusa-Prakerti dan disiplin pengendalian diri.',
+                    content: `
+                        <h3 class="text-2xl font-bold text-[#9D174D] mb-4">3. Samkhya (Prinsip Kosmis) 🌸</h3>
+                        <p class="mb-3">Didirikan oleh Rsi Kapila. Samkhya bersifat dualistik analitis, membedakan antara <strong>Purusa</strong> (jiwa sadar murni) dan <strong>Prakerti</strong> (alam material). Pembebasan tercapai ketika jiwa menyadari bahwa ia terpisah dari ikatan material.</p>
+
+                        <h3 class="text-2xl font-bold text-[#9D174D] mt-8 mb-4">4. Yoga (Disiplin Spiritual) 🪷</h3>
+                        <p class="mb-3">Didirikan oleh Rsi Patanjali. Yoga adalah praktik nyata untuk mengendalikan gejolak pikiran (*Citta Vrtti Nirodha*) melalui delapan tahapan (*Astaangga Yoga*).</p>
+                        <div class="bg-[#FFF7FB] p-4 rounded-xl mt-4 border border-[#FCE7F3]">
+                            <span class="font-semibold text-[#9D174D]">Penerapan Sehari-hari: 🌷</span> Melakukan meditasi, konsentrasi belajar, serta menjaga kesehatan mental dan fisik.
+                        </div>
+                    `
+                },
+                {
+                    id: 'sad_darsana_3',
+                    title: 'B3. Mimamsa & Wedanta 🪷',
+                    desc: 'Penafsiran ritual Weda dan hakikat mutlak Brahman-Atman.',
+                    content: `
+                        <h3 class="text-2xl font-bold text-[#9D174D] mb-4">5. Mimamsa / Purva Mimamsa 🌷</h3>
+                        <p class="mb-3">Didirikan oleh Rsi Jaimini. Berfokus pada penafsiran ritual teks Weda bagian Karmakanda, menekankan pelaksanaan kewajiban suci, yajna, dan Dharma secara tertib.</p>
+
+                        <h3 class="text-2xl font-bold text-[#9D174D] mt-8 mb-4">6. Wedanta / Uttara Mimamsa 🪷</h3>
+                        <p class="mb-3">Bersumber dari Upanisad. Membahas hubungan hakiki antara <strong>Brahman</strong> (Tuhan) dan <strong>Atman</strong> (Jiwa individu). Menekankan bahwa hakikat sejati diri manusia adalah suci.</p>
+                        <div class="bg-[#FFF7FB] p-4 rounded-xl mt-4 border border-[#FCE7F3]">
+                            <span class="font-semibold text-[#9D174D]">Refleksi: 🌸</span> Menyadari sifat "Tat Tvam Asi" (Aku adalah Engkau) menumbuhkan rasa empati sosial yang tinggi.
+                        </div>
+                    `
+                },
+                {
+                    id: 'refleksi',
+                    title: 'C. Refleksi & Penerapan 🌸',
+                    desc: 'Menghubungkan nilai Darsana dengan pembentukan karakter dan budi pekerti.',
+                    content: `
+                        <h3 class="text-2xl font-bold text-[#9D174D] mb-4">Refleksi Pembelajaran Darsana 🌸</h3>
+                        <p class="mb-4">Setelah mempelajari keenam sistem filsafat Hindu (Sad Darsana), mari renungkan pertanyaan reflektif berikut dalam diri Anda:</p>
+                        <ul class="space-y-3 list-disc list-inside bg-white p-6 rounded-xl border border-[#FCE7F3] shadow-xs text-[#50102B]">
+                            <li>Bagaimana cara Anda menggunakan nalar kritis (Nyaya) dalam menyaring informasi atau berita hoaks di media sosial?</li>
+                            <li>Dalam situasi stres atau tekanan sekolah, teknik disiplin apa dari ajaran <strong>Yoga</strong> yang dapat Anda terapkan untuk menenangkan pikiran?</li>
+                            <li>Bagaimana konsep <strong>Wedanta</strong> (Tat Tvam Asi) membimbing Anda untuk menghargai perbedaan dan mencegah tindakan perundungan di sekolah?</li>
+                        </ul>
+                    `
+                }
+            ],
+            quizQuestions: [
+                {
+                    q: "Apa arti harfiah dari kata 'Darsana' dalam tradisi pemikiran filsafat Hindu?",
+                    options: ["Melihat atau pandangan", "Melakukan ritual korban", "Kekuatan gaib", "Mantra suci"],
+                    answer: 0,
+                    explanation: "Darsana berasal dari akar kata 'drś' yang berarti melihat atau pandangan terhadap kebenaran hakiki."
+                },
+                {
+                    q: "Sistem filsafat Hindu yang menekankan metode logika ketat dan epistemologi (cara memperoleh pengetahuan yang sah) adalah...",
+                    options: ["Samkhya", "Nyaya", "Mimamsa", "Wedanta"],
+                    answer: 1,
+                    explanation: "Nyaya adalah sistem filsafat yang sangat menekankan logika, penalaran, dan analisis epistemologi."
+                },
+                {
+                    q: "Siapakah tokoh pendiri dari sistem filsafat Yoga yang merumuskan ajaran Astaangga Yoga?",
+                    options: ["Rsi Gautama", "Rsi Kanada", "Rsi Patanjali", "Rsi Jaimini"],
+                    answer: 2,
+                    explanation: "Rsi Patanjali adalah penyusun Yoga Sutra yang memuat delapan tahapan spiritual (Astaangga Yoga)."
+                },
+                {
+                    q: "Dalam sistem Samkhya, prinsip dualistik utama yang menyusun alam semesta dan kesadaran adalah...",
+                    options: ["Brahman dan Maya", "Purusa dan Prakerti", "Karma dan Samsara", "Atman dan Paramatman"],
+                    answer: 1,
+                    explanation: "Samkhya membedakan realitas menjadi dua prinsip abadi yaitu Purusa (jiwa) dan Prakerti (alam materi)."
+                },
+                {
+                    q: "Filsafat Wedanta yang bersumber pada kitab Upanisad utamanya mengkaji hubungan antara...",
+                    options: ["Bulan dan Bintang", "Brahman, Atman, dan Jagat", "Mantram dan Yajna", "Raja dan Rakyat"],
+                    answer: 1,
+                    explanation: "Wedanta berfokus pada hakikat ketuhanan (Brahman) dan jiwa manusia (Atman) serta hubungannya."
+                },
+                {
+                    q: "Sistem filsafat Waisesika mengklasifikasikan objek-objek fisik di alam semesta kedalam konsep...",
+                    options: ["Padartha (kategori realitas)", "Citta Vrtti", "Pramana", "Yajna"],
+                    answer: 0,
+                    explanation: "Waisesika membedah unsur keberadaan dan atom melalui kategori objek yang disebut Padartha."
+                },
+                {
+                    q: "Bagian Weda yang dikaji secara khusus dalam sistem Mimamsa (Purva Mimamsa) berkaitan erat dengan...",
+                    options: ["Ilmu kedokteran kuno", "Tata cara upacara dan pelaksanaan Dharma", "Astronomi dan perbintangan", "Seni tari sakral"],
+                    answer: 1,
+                    explanation: "Purva Mimamsa menitikberatkan pada pelaksanaan ritual suci dan kewajiban dharma karmakanda."
+                },
+                {
+                    q: "Manakah di bawah ini yang merupakan bagian dari tahapan pengendalian pikiran dalam Astaangga Yoga?",
+                    options: ["Pratyahara dan Dharana", "Nyaya dan Waisesika", "Purusa dan Prakerti", "Padartha dan Parmanu"],
+                    answer: 0,
+                    explanation: "Pratyahara (penarikan indria) dan Dharana (konsentrasi) adalah bagian dari Astaangga Yoga."
+                },
+                {
+                    q: "Bagaimana relevansi pemikiran Darsana bagi siswa SMA dalam kehidupan modern?",
+                    options: ["Hanya untuk dihafal saat ujian", "Melatih nalar kritis, etika, dan ketenangan mental", "Menghindari pelajaran sains", "Meningkatkan kemampuan berdagang"],
+                    answer: 1,
+                    explanation: "Darsana melatih kecerdasan emosional, spiritual, serta nalar kritis menghadapi tantangan zaman."
+                },
+                {
+                    q: "Istilah 'Tat Tvam Asi' yang bermakna 'Aku adalah Engkau' sangat erat kaitannya dengan penghayatan filsafat...",
+                    options: ["Nyaya", "Waisesika", "Wedanta", "Samkhya"],
+                    answer: 2,
+                    explanation: "Tat Tvam Asi merupakan ajaran luhur non-dualisme dalam Wedanta mengenai kesatuan jiwa."
+                }
+            ]
+        };
+
+        // --- MANAJEMEN STATE & LOCALSTORAGE ---
+        let currentUser = null;
+        let currentClass = null;
+        let currentScreen = 'login';
+        let activeModuleIndex = 0;
+        
+        let currentQuizIndex = 0;
+        let selectedOption = null;
+        let quizAnswers = [];
+        let quizScore = 0;
+
+        function loadUserData(name, cls) {
+            const key = `darsana_user_${name}_${cls}`;
+            let data = localStorage.getItem(key);
+            if (!data) {
+                data = {
+                    name: name,
+                    cls: cls,
+                    completedModules: [],
+                    lastQuizScore: null,
+                    bestQuizScore: null,
+                    quizAttempts: 0,
+                    lastActive: new Date().toISOString()
+                };
+                saveUserDataStore(key, data);
+            } else {
+                data = JSON.parse(data);
+            }
+            return { key, data };
+        }
+
+        function saveUserDataStore(key, data) {
+            localStorage.setItem(key, JSON.stringify(data));
+            let allUsers = JSON.parse(localStorage.getItem('darsana_all_users') || '[]');
+            if (!allUsers.includes(key)) {
+                allUsers.push(key);
+                localStorage.setItem('darsana_all_users', JSON.stringify(allUsers));
+            }
+        }
+
+        // --- RENDER ROUTER ---
+        function render() {
+            const app = document.getElementById('app');
+            app.innerHTML = '';
+
+            if (currentScreen === 'login') {
+                app.innerHTML = renderLoginScreen();
+            } else if (currentScreen === 'dashboard') {
+                app.innerHTML = renderDashboard();
+            } else if (currentScreen === 'material') {
+                app.innerHTML = renderMaterialScreen();
+            } else if (currentScreen === 'mindmap') {
+                app.innerHTML = renderMindMapScreen();
+            } else if (currentScreen === 'quiz') {
+                app.innerHTML = renderQuizScreen();
+            } else if (currentScreen === 'result') {
+                app.innerHTML = renderResultScreen();
+            } else if (currentScreen === 'teacher') {
+                app.innerHTML = renderTeacherDashboard();
+            }
+        }
+
+        // --- 1. HALAMAN PEMBUKA ---
+        function renderLoginScreen() {
+            let allUsers = JSON.parse(localStorage.getItem('darsana_all_users') || '[]');
+            let historyListHTML = '';
+            if (allUsers.length > 0) {
+                historyListHTML = `<div class="mt-6 border-t border-[#FCE7F3] pt-4"><p class="text-xs font-medium text-[#701A45] mb-2">Atau lanjutkan sesi sebelumnya: 🌸</p><div class="flex flex-wrap gap-2">`;
+                allUsers.forEach(k => {
+                    let d = JSON.parse(localStorage.getItem(k));
+                    if (d) {
+                        historyListHTML += `<button onclick="resumeUser('${d.name}', '${d.cls}')" class="bg-[#FCE7F3] hover:bg-[#F9A8D4] text-[#831843] px-3 py-1.5 rounded-xl text-xs font-medium transition">${d.name} (${d.cls})</button>`;
+                    }
+                });
+                historyListHTML += `</div></div>`;
+            }
+
+            return `
+                <div class="flex-1 flex items-center justify-center p-4 hero-gradient relative overflow-hidden">
+                    <!-- Ornamen Floral Latar -->
+                    <div class="absolute -top-10 -left-10 text-6xl opacity-20 pointer-events-none">🪷</div>
+                    <div class="absolute bottom-10 right-10 text-6xl opacity-20 pointer-events-none">🌸</div>
+
+                    <div class="max-w-md w-full card-floral p-8 relative z-10">
+                        <div class="text-center mb-6">
+                            <span class="bg-[#FCE7F3] text-[#9D174D] text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Kurikulum Merdeka 🪷</span>
+                            <h1 class="text-3xl font-bold text-[#9D174D] mt-3">Jelajah Darsana</h1>
+                            <p class="text-sm text-[#701A45] mt-1">Media Pembelajaran Interaktif Pendidikan Agama Hindu Kelas XI SMA 🌸</p>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-[#701A45] mb-1">Nama Lengkap Siswa</label>
+                                <input type="text" id="inputName" placeholder="Contoh: I Made Sudana" class="w-full px-4 py-3 rounded-xl border border-[#F9A8D4] focus:ring-2 focus:ring-[#EC4899] focus:outline-none transition bg-white text-[#4A1833]">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-[#701A45] mb-1">Kelas</label>
+                                <select id="inputClass" class="w-full px-4 py-3 rounded-xl border border-[#F9A8D4] focus:ring-2 focus:ring-[#EC4899] focus:outline-none transition bg-white text-[#4A1833]">
+                                    <option value="XI A">Kelas XI A</option>
+                                    <option value="XI B">Kelas XI B</option>
+                                    <option value="XI C">Kelas XI C</option>
+                                    <option value="XI D">Kelas XI D</option>
+                                </select>
+                            </div>
+                            <div id="loginError" class="text-red-500 text-xs hidden">Harap masukkan nama lengkap Anda terlebih dahulu!</div>
+                            <button onclick="handleLogin()" class="w-full primary-button py-3 text-sm shadow-md">Mulai Belajar 🌸</button>
+                            <button onclick="openTeacherDashboard()" class="w-full bg-[#FFF7FB] hover:bg-[#FCE7F3] text-[#831843] border border-[#F9A8D4] font-medium py-2.5 rounded-xl text-xs transition">Dashboard Guru (Simulasi)</button>
+                        </div>
+                        ${historyListHTML}
+                    </div>
+                </div>
+            `;
+        }
+
+        function handleLogin() {
+            const name = document.getElementById('inputName').value.trim();
+            const cls = document.getElementById('inputClass').value;
+            if (!name) {
+                document.getElementById('loginError').classList.remove('hidden');
+                return;
+            }
+            currentUser = name;
+            currentClass = cls;
+            loadUserData(currentUser, currentClass);
+            currentScreen = 'dashboard';
+            render();
+        }
+
+        function resumeUser(name, cls) {
+            currentUser = name;
+            currentClass = cls;
+            currentScreen = 'dashboard';
+            render();
+        }
+
+        // --- 2. DASHBOARD PEMBELAJARAN ---
+        function renderDashboard() {
+            const { data } = loadUserData(currentUser, currentClass);
+            const totalModules = courseData.modules.length;
+            const completedCount = data.completedModules.length;
+            const progressPercent = Math.round((completedCount / totalModules) * 100);
+
+            let moduleListHTML = '';
+            courseData.modules.forEach((mod, idx) => {
+                const isDone = data.completedModules.includes(mod.id);
+                const statusBadge = isDone 
+                    ? '<span class="bg-pink-100 text-[#9D174D] text-xs px-2.5 py-1 rounded-full font-semibold">Selesai ✓</span>'
+                    : '<span class="bg-[#FCE7F3] text-[#701A45] text-xs px-2.5 py-1 rounded-full font-medium">Belum Selesai</span>';
+                
+                moduleListHTML += `
+                    <div class="card-floral p-4 flex items-center justify-between hover:border-[#EC4899] transition">
+                        <div>
+                            <h4 class="font-semibold text-[#50102B]">${mod.title}</h4>
+                            <p class="text-xs text-[#701A45] mt-0.5">${mod.desc}</p>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            ${statusBadge}
+                            <button onclick="openMaterial(${idx})" class="primary-button text-xs px-3 py-2">Pelajari</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            return `
+                <header class="bg-white border-b border-[#FCE7F3] px-6 py-4 flex justify-between items-center shadow-2xs">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full primary-gradient text-white flex items-center justify-center font-bold text-sm shadow-xs">${currentUser.charAt(0)}</div>
+                        <div>
+                            <h2 class="font-bold text-[#50102B] text-sm">Namaste, ${currentUser}! 🌸</h2>
+                            <p class="text-xs text-[#701A45]">Kelas ${currentClass} | Jelajah Darsana</p>
+                        </div>
+                    </div>
+                    <button onclick="logout()" class="text-xs text-[#DB2777] hover:underline font-medium">Keluar Akun</button>
+                </header>
+
+                <main class="max-w-5xl w-full mx-auto p-6 space-y-6 flex-1">
+                    <!-- Banner Sapaan Personal -->
+                    <div class="primary-gradient text-white p-6 rounded-2xl shadow-md flex flex-col md:flex-row justify-between items-center gap-4 relative overflow-hidden">
+                        <div class="absolute -right-6 -bottom-6 text-7xl opacity-20 pointer-events-none">🪷</div>
+                        <div>
+                            <span class="bg-white/20 text-white text-xs px-3 py-1 rounded-full uppercase tracking-wider">Modul Filsafat Hindu 🪷</span>
+                            <h3 class="text-2xl font-bold mt-2">Mari Jelajahi Pemikiran Darsana</h3>
+                            <p class="text-pink-100 text-sm mt-1">Pahami Sad Darsana untuk memperkuat sradha, penalaran kritis, dan budi pekerti.</p>
+                        </div>
+                        <div class="flex gap-2 relative z-10">
+                            <button onclick="openMindMap()" class="bg-white text-[#9D174D] hover:bg-pink-50 font-semibold px-4 py-2.5 rounded-xl text-sm shadow transition">Buka Mind Map 🌸</button>
+                            <button onclick="openQuiz()" class="bg-[#9D174D] hover:bg-[#831843] text-white font-semibold px-4 py-2.5 rounded-xl text-sm shadow transition">Kerjakan Kuis</button>
+                        </div>
+                    </div>
+
+                    <!-- Statistik Progres -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="card-floral p-5">
+                            <p class="text-xs text-[#701A45] font-medium">Progres Penyelesaian Materi</p>
+                            <div class="flex items-end justify-between mt-2">
+                                <span class="text-3xl font-bold text-[#9D174D]">${progressPercent}%</span>
+                                <span class="text-xs text-[#701A45]">${completedCount} dari ${totalModules} selesai</span>
+                            </div>
+                            <div class="w-full bg-[#FCE7F3] h-2 rounded-full mt-3 overflow-hidden">
+                                <div class="progress-fill h-full" style="width: ${progressPercent}%"></div>
+                            </div>
+                        </div>
+                        <div class="card-floral p-5">
+                            <p class="text-xs text-[#701A45] font-medium">Nilai Kuis Terakhir</p>
+                            <div class="mt-2 flex items-baseline gap-2">
+                                <span class="text-3xl font-bold text-[#9D174D]">${data.lastQuizScore !== null ? data.lastQuizScore : '-'}</span>
+                                <span class="text-xs text-[#701A45]">skor maks 100</span>
+                            </div>
+                            <p class="text-xs text-[#701A45] mt-3">Percobaan kuis: ${data.quizAttempts} kali</p>
+                        </div>
+                        <div class="card-floral p-5">
+                            <p class="text-xs text-[#701A45] font-medium">Nilai Terbaik Kuis</p>
+                            <div class="mt-2 flex items-baseline gap-2">
+                                <span class="text-3xl font-bold text-[#DB2777]">${data.bestQuizScore !== null ? data.bestQuizScore : '-'}</span>
+                                <span class="text-xs text-[#701A45]">skor maks 100</span>
+                            </div>
+                            <p class="text-xs text-[#701A45] mt-3">Status: ${data.bestQuizScore >= 75 ? 'Tuntas & Kompeten 🌸' : 'Perlu Peningkatan'}</p>
+                        </div>
+                    </div>
+
+                    <!-- Daftar Modul Materi -->
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-lg font-bold text-[#50102B]">Daftar Materi Pembelajaran 🪷</h3>
+                            <button onclick="openMindMap()" class="text-xs text-[#DB2777] font-semibold hover:underline">Lihat Mind Map Antarkonsep &rarr;</button>
+                        </div>
+                        <div class="grid gap-3">
+                            ${moduleListHTML}
+                        </div>
+                    </div>
+                </main>
+            `;
+        }
+
+        // --- 3. MATERI PEMBELAJARAN ---
+        function openMaterial(index) {
+            activeModuleIndex = index;
+            currentScreen = 'material';
+            render();
+        }
+
+        function renderMaterialScreen() {
+            const mod = courseData.modules[activeModuleIndex];
+            const { key, data } = loadUserData(currentUser, currentClass);
+            const isCompleted = data.completedModules.includes(mod.id);
+
+            return `
+                <header class="bg-white border-b border-[#FCE7F3] px-6 py-4 flex justify-between items-center shadow-2xs">
+                    <button onclick="backToDashboard()" class="text-sm font-medium text-[#DB2777] hover:underline">&larr; Kembali ke Dashboard</button>
+                    <span class="text-xs bg-[#FCE7F3] text-[#9D174D] px-3 py-1 rounded-full font-semibold">Materi ${activeModuleIndex + 1} dari ${courseData.modules.length}</span>
+                </header>
+
+                <main class="max-w-3xl w-full mx-auto p-6 space-y-6 flex-1">
+                    <div class="card-floral p-8">
+                        <div class="prose max-w-none text-[#50102B]">
+                            ${mod.content}
+                        </div>
+
+                        <div class="mt-8 pt-6 border-t border-[#FCE7F3] flex flex-col sm:flex-row justify-between items-center gap-4">
+                            <button onclick="prevModule()" ${activeModuleIndex === 0 ? 'disabled' : ''} class="px-4 py-2 rounded-xl border border-[#F9A8D4] text-sm font-medium text-[#701A45] disabled:opacity-40 hover:bg-[#FFF7FB] transition">Sebelumnya</button>
+                            
+                            <button onclick="markModuleComplete('${mod.id}')" class="px-5 py-2.5 rounded-xl ${isCompleted ? 'bg-pink-100 text-[#9D174D] border border-[#F9A8D4]' : 'primary-button'} font-semibold text-sm transition">
+                                ${isCompleted ? '✓ Bagian Telah Selesai' : 'Tandai Selesai & Lanjut 🌸'}
+                            </button>
+
+                            <button onclick="nextModule()" ${activeModuleIndex === courseData.modules.length - 1 ? 'disabled' : ''} class="px-4 py-2 rounded-xl bg-[#FCE7F3] text-[#9D174D] text-sm font-medium disabled:opacity-40 hover:bg-[#F9A8D4] transition">Berikutnya</button>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <button onclick="openMindMap()" class="text-xs text-[#701A45] hover:text-[#9D174D] font-medium underline">Butuh gambaran visual hubungan konsep? Buka Mind Map Interaktif 🪷</button>
+                    </div>
+                </main>
+            `;
+        }
+
+        function markModuleComplete(modId) {
+            const { key, data } = loadUserData(currentUser, currentClass);
+            if (!data.completedModules.includes(modId)) {
+                data.completedModules.push(modId);
+                saveUserDataStore(key, data);
+            }
+            if (activeModuleIndex < courseData.modules.length - 1) {
+                activeModuleIndex++;
+            }
+            render();
+        }
+
+        function nextModule() {
+            if (activeModuleIndex < courseData.modules.length - 1) {
+                activeModuleIndex++;
+                render();
+            }
+        }
+
+        function prevModule() {
+            if (activeModuleIndex > 0) {
+                activeModuleIndex--;
+                render();
+            }
+        }
+
+        // --- 4. MIND MAP INTERAKTIF ---
+        function openMindMap() {
+            currentScreen = 'mindmap';
+            render();
+        }
+
+        function renderMindMapScreen() {
+            return `
+                <header class="bg-white border-b border-[#FCE7F3] px-6 py-4 flex justify-between items-center shadow-2xs">
+                    <button onclick="backToDashboard()" class="text-sm font-medium text-[#DB2777] hover:underline">&larr; Kembali ke Dashboard</button>
+                    <h2 class="font-bold text-[#50102B] text-sm">Mind Map Interaktif Darsana 🪷</h2>
+                </header>
+
+                <main class="max-w-4xl w-full mx-auto p-6 space-y-6 flex-1">
+                    <div class="bg-[#FFF7FB] border border-[#F9A8D4] p-4 rounded-xl text-center">
+                        <p class="text-sm text-[#9D174D] font-medium">Klik pada salah satu cabang filsafat di bawah ini untuk melihat penjelasan konsep utama, kata kunci, dan contoh penerapannya 🌸</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div onclick="showMindMapDetail('Nyaya 🌺', 'Sistem Logika & Epistemologi', 'Mengkaji cara memperoleh pengetahuan yang sah (Pramana) melalui pengamatan, penyimpulan, perbandingan, dan kesaksian.', 'Kritis, Objektif, Analitis')" class="card-floral p-5 border-l-4 border-l-[#F9A8D4] cursor-pointer hover:shadow-md transition">
+                            <span class="text-xs font-semibold text-[#DB2777] uppercase">Cabang 1</span>
+                            <h3 class="font-bold text-[#50102B] text-lg mt-1">Nyaya</h3>
+                            <p class="text-xs text-[#701A45] mt-1">Penalaran & Cara Memperoleh Pengetahuan</p>
+                        </div>
+                        <div onclick="showMindMapDetail('Waisesika 🌷', 'Kategori Realitas & Atom', 'Mengkaji unsur-unsur dasar pembentuk materi alam semesta (Padartha dan Parmanu).', 'Sistematis, Kategorisasi Material')" class="card-floral p-5 border-l-4 border-l-[#EC4899] cursor-pointer hover:shadow-md transition">
+                            <span class="text-xs font-semibold text-[#EC4899] uppercase">Cabang 2</span>
+                            <h3 class="font-bold text-[#50102B] text-lg mt-1">Waisesika</h3>
+                            <p class="text-xs text-[#701A45] mt-1">Unsur Keberadaan & Materi</p>
+                        </div>
+                        <div onclick="showMindMapDetail('Samkhya 🌸', 'Dualisme Purusa & Prakerti', 'Membedakan antara jiwa sadar murni (Purusa) dan alam material (Prakerti).', 'Analisis Kosmis, Pembedahan Jiwa-Materi')" class="card-floral p-5 border-l-4 border-l-[#DB2777] cursor-pointer hover:shadow-md transition">
+                            <span class="text-xs font-semibold text-[#DB2777] uppercase">Cabang 3</span>
+                            <h3 class="font-bold text-[#50102B] text-lg mt-1">Samkhya</h3>
+                            <p class="text-xs text-[#701A45] mt-1">Prinsip Purusa & Prakerti</p>
+                        </div>
+                        <div onclick="showMindMapDetail('Yoga 🪷', 'Disiplin Spiritual & Pikiran', 'Praktik pengendalian gelombang pikiran (Citta Vrtti Nirodha) melalui Astaangga Yoga.', 'Meditasi, Konsentrasi, Pengendalian Diri')" class="card-floral p-5 border-l-4 border-l-[#9D174D] cursor-pointer hover:shadow-md transition">
+                            <span class="text-xs font-semibold text-[#9D174D] uppercase">Cabang 4</span>
+                            <h3 class="font-bold text-[#50102B] text-lg mt-1">Yoga</h3>
+                            <p class="text-xs text-[#701A45] mt-1">Disiplin Pikiran & Meditasi</p>
+                        </div>
+                        <div onclick="showMindMapDetail('Mimamsa 🌷', 'Penafsiran Weda & Dharma', 'Berfokus pada tata cara pelaksanaan ritual suci, yajna, dan dharma karmakanda.', 'Kewajiban Suci, Ritual, Keteraturan Kosmis')" class="card-floral p-5 border-l-4 border-l-[#F9A8D4] cursor-pointer hover:shadow-md transition">
+                            <span class="text-xs font-semibold text-[#DB2777] uppercase">Cabang 5</span>
+                            <h3 class="font-bold text-[#50102B] text-lg mt-1">Mimamsa</h3>
+                            <p class="text-xs text-[#701A45] mt-1">Pelaksanaan Dharma & Weda</p>
+                        </div>
+                        <div onclick="showMindMapDetail('Wedanta 🪷', 'Hakikat Brahman & Atman', 'Puncak filsafat Upanisad mengenai kesatuan mutlak antara jiwa individu (Atman) dan Tuhan (Brahman).', 'Tat Tvam Asi, Non-Dualisme, Kesadaran Universal')" class="card-floral p-5 border-l-4 border-l-[#EC4899] cursor-pointer hover:shadow-md transition">
+                            <span class="text-xs font-semibold text-[#EC4899] uppercase">Cabang 6</span>
+                            <h3 class="font-bold text-[#50102B] text-lg mt-1">Wedanta</h3>
+                            <p class="text-xs text-[#701A45] mt-1">Hakikat Realitas Tertinggi</p>
+                        </div>
+                    </div>
+
+                    <div id="mindmapDetailBox" class="card-floral p-6 hidden">
+                        <h4 id="mmTitle" class="text-xl font-bold text-[#9D174D] mb-2"></h4>
+                        <p id="mmSubtitle" class="text-sm font-semibold text-[#50102B] mb-3"></p>
+                        <p id="mmDesc" class="text-sm text-[#701A45] mb-4"></p>
+                        <div class="bg-[#FFF7FB] p-3 rounded-xl text-xs text-[#831843] border border-[#FCE7F3]">
+                            <strong>Kata Kunci:</strong> <span id="mmKeyword"></span>
+                        </div>
+                    </div>
+                </main>
+            `;
+        }
+
+        function showMindMapDetail(title, subtitle, desc, keyword) {
+            const box = document.getElementById('mindmapDetailBox');
+            box.classList.remove('hidden');
+            document.getElementById('mmTitle').innerText = title;
+            document.getElementById('mmSubtitle').innerText = subtitle;
+            document.getElementById('mmDesc').innerText = desc;
+            document.getElementById('mmKeyword').innerText = keyword;
+            box.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // --- 5. KUIS INTERAKTIF ---
+        function openQuiz() {
+            currentQuizIndex = 0;
+            selectedOption = null;
+            quizAnswers = [];
+            currentScreen = 'quiz';
+            render();
+        }
+
+        function renderQuizScreen() {
+            const q = courseData.quizQuestions[currentQuizIndex];
+            let optionsHTML = '';
+            q.options.forEach((opt, idx) => {
+                let btnStyle = "bg-white border-[#FCE7F3] hover:border-[#F9A8D4] text-[#50102B]";
+                if (selectedOption === idx) {
+                    btnStyle = "bg-[#FCE7F3] border-[#EC4899] text-[#9D174D] font-semibold ring-2 ring-[#EC4899]";
+                }
+                optionsHTML += `
+                    <button onclick="selectOption(${idx})" class="w-full text-left p-4 rounded-xl border ${btnStyle} transition flex items-center justify-between">
+                        <span>${opt}</span>
+                        <div class="w-5 h-5 rounded-full border border-[#F9A8D4] flex items-center justify-center ${selectedOption === idx ? 'primary-gradient text-white border-transparent' : ''}">
+                            ${selectedOption === idx ? '✓' : ''}
+                        </div>
+                    </button>
+                `;
+            });
+
+            return `
+                <header class="bg-white border-b border-[#FCE7F3] px-6 py-4 flex justify-between items-center shadow-2xs">
+                    <button onclick="backToDashboard()" class="text-sm font-medium text-[#DB2777] hover:underline">&larr; Keluar Kuis</button>
+                    <span class="text-xs bg-[#FCE7F3] text-[#9D174D] px-3 py-1 rounded-full font-semibold">Soal ${currentQuizIndex + 1} dari ${courseData.quizQuestions.length}</span>
+                </header>
+
+                <main class="max-w-2xl w-full mx-auto p-6 space-y-6 flex-1 flex flex-col justify-center">
+                    <div class="card-floral p-8 space-y-6">
+                        <div>
+                            <span class="text-xs font-semibold text-[#DB2777] uppercase tracking-wider">Evaluasi Pemahaman Darsana 🌸</span>
+                            <h3 class="text-lg font-bold text-[#50102B] mt-1">${q.q}</h3>
+                        </div>
+
+                        <div class="space-y-3">
+                            ${optionsHTML}
+                        </div>
+
+                        <div class="flex justify-between pt-4 border-t border-[#FCE7F3]">
+                            <span class="text-xs text-[#701A45]">Pilih jawaban yang paling tepat.</span>
+                            <button onclick="submitAnswer()" ${selectedOption === null ? 'disabled' : ''} class="primary-button px-6 py-2.5 text-sm disabled:opacity-40">
+                                ${currentQuizIndex === courseData.quizQuestions.length - 1 ? 'Selesai & Lihat Hasil 🪷' : 'Jawab & Lanjut'}
+                            </button>
+                        </div>
+                    </div>
+                </main>
+            `;
+        }
+
+        function selectOption(idx) {
+            selectedOption = idx;
+            render();
+        }
+
+        function submitAnswer() {
+            quizAnswers.push(selectedOption);
+            selectedOption = null;
+            if (currentQuizIndex < courseData.quizQuestions.length - 1) {
+                currentQuizIndex++;
+                render();
+            } else {
+                calculateQuizResult();
+            }
+        }
+
+        function calculateQuizResult() {
+            let correctCount = 0;
+            courseData.quizQuestions.forEach((q, idx) => {
+                if (quizAnswers[idx] === q.answer) {
+                    correctCount++;
+                }
+            });
+            quizScore = Math.round((correctCount / courseData.quizQuestions.length) * 100);
+
+            const { key, data } = loadUserData(currentUser, currentClass);
+            data.quizAttempts = (data.quizAttempts || 0) + 1;
+            data.lastQuizScore = quizScore;
+            if (data.bestQuizScore === null || quizScore > data.bestQuizScore) {
+                data.bestQuizScore = quizScore;
+            }
+            saveUserDataStore(key, data);
+
+            currentScreen = 'result';
+            render();
+        }
+
+        // --- 6. HALAMAN HASIL BELAJAR ---
+        function renderResultScreen() {
+            const { data } = loadUserData(currentUser, currentClass);
+            let motivation = "Luar biasa! Pemahaman Anda tentang filsafat Darsana sudah sangat matang 🌸.";
+            if (quizScore < 75) {
+                motivation = "Semangat terus! Pelajari kembali materi Sad Darsana dan Mind Map untuk memperdalam pemahamanmu 🪷.";
+            }
+
+            return `
+                <header class="bg-white border-b border-[#FCE7F3] px-6 py-4 flex justify-between items-center shadow-2xs">
+                    <button onclick="backToDashboard()" class="text-sm font-medium text-[#DB2777] hover:underline">&larr; Kembali ke Dashboard</button>
+                    <span class="text-xs bg-[#FCE7F3] text-[#9D174D] px-3 py-1 rounded-full font-semibold">Hasil Evaluasi Belajar</span>
+                </header>
+
+                <main class="max-w-xl w-full mx-auto p-6 space-y-6 flex-1 flex flex-col justify-center">
+                    <div class="card-floral p-8 text-center space-y-4">
+                        <div class="w-20 h-20 primary-gradient text-white rounded-full flex items-center justify-center text-3xl font-bold mx-auto shadow-md">
+                            ${quizScore}
+                        </div>
+                        <h3 class="text-2xl font-bold text-[#50102B]">Evaluasi Selesai, ${currentUser}! 🌸</h3>
+                        <p class="text-sm text-[#701A45]">${motivation}</p>
+
+                        <div class="bg-[#FFF7FB] p-4 rounded-xl text-left space-y-2 border border-[#FCE7F3]">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-[#701A45]">Nama Siswa:</span>
+                                <span class="font-semibold text-[#50102B]">${currentUser} (${currentClass})</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-[#701A45]">Skor Akhir Kuis:</span>
+                                <span class="font-semibold text-[#9D174D]">${quizScore} / 100</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-[#701A45]">Nilai Terbaik Anda:</span>
+                                <span class="font-semibold text-[#DB2777]">${data.bestQuizScore} / 100</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 flex flex-col gap-2">
+                            <button onclick="openQuiz()" class="w-full primary-button py-3 text-sm shadow-md">Ulangi Kuis</button>
+                            <button onclick="openMindMap()" class="w-full bg-[#FCE7F3] hover:bg-[#F9A8D4] text-[#9D174D] font-semibold py-3 rounded-xl text-sm transition">Tinjau Mind Map Interaktif 🪷</button>
+                            <button onclick="backToDashboard()" class="w-full bg-[#FFF7FB] hover:bg-[#FCE7F3] text-[#701A45] font-medium py-3 rounded-xl text-sm border border-[#F9A8D4] transition">Kembali ke Dashboard</button>
+                        </div>
+                    </div>
+                </main>
+            `;
+        }
+
+        // --- 7. DASHBOARD GURU ---
+        function openTeacherDashboard() {
+            currentScreen = 'teacher';
+            render();
+        }
+
+        function renderTeacherDashboard() {
+            let allUsers = JSON.parse(localStorage.getItem('darsana_all_users') || '[]');
+            let rowsHTML = '';
+
+            if (allUsers.length === 0) {
+                rowsHTML = `<tr><td colspan="5" class="px-6 py-4 text-center text-[#701A45] text-sm">Belum ada data siswa yang terekam di perangkat ini.</td></tr>`;
+            } else {
+                allUsers.forEach(k => {
+                    let d = JSON.parse(localStorage.getItem(k));
+                    if (d) {
+                        rowsHTML += `
+                            <tr class="border-b border-[#FCE7F3] hover:bg-[#FFF7FB]">
+                                <td class="px-6 py-4 font-medium text-[#50102B]">${d.name}</td>
+                                <td class="px-6 py-4 text-[#701A45]">${d.cls}</td>
+                                <td class="px-6 py-4 text-[#701A45]">${d.completedModules.length} dari ${courseData.modules.length} Selesai</td>
+                                <td class="px-6 py-4 text-[#9D174D] font-semibold">${d.bestQuizScore !== null ? d.bestQuizScore : '-'}</td>
+                                <td class="px-6 py-4 text-[#701A45] text-xs">${new Date(d.lastActive).toLocaleDateString()}</td>
+                            </tr>
+                        `;
+                    }
+                });
+            }
+
+            return `
+                <header class="bg-white border-b border-[#FCE7F3] px-6 py-4 flex justify-between items-center shadow-2xs">
+                    <button onclick="logout()" class="text-sm font-medium text-[#DB2777] hover:underline">&larr; Kembali ke Beranda Siswa</button>
+                    <span class="text-xs bg-[#50102B] text-white px-3 py-1 rounded-full font-semibold">Dashboard Guru 🌸</span>
+                </header>
+
+                <main class="max-w-5xl w-full mx-auto p-6 space-y-6 flex-1">
+                    <div class="card-floral p-6 space-y-4">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <h3 class="text-xl font-bold text-[#50102B]">Rekap Progres Belajar Siswa 🪷</h3>
+                                <p class="text-xs text-[#701A45]">Data tersimpan secara lokal dan terisolasi.</p>
+                            </div>
+                            <button onclick="exportCSV()" class="primary-button text-xs py-2 px-4">Ekspor Rekap CSV</button>
+                        </div>
+
+                        <div class="overflow-x-auto border border-[#FCE7F3] rounded-xl">
+                            <table class="w-full text-left border-collapse text-sm">
+                                <thead class="bg-[#FFF7FB] text-[#701A45] uppercase text-xs">
+                                    <tr>
+                                        <th class="px-6 py-3">Nama Siswa</th>
+                                        <th class="px-6 py-3">Kelas</th>
+                                        <th class="px-6 py-3">Progres Materi</th>
+                                        <th class="px-6 py-3">Nilai Terbaik Kuis</th>
+                                        <th class="px-6 py-3">Aktivitas Terakhir</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${rowsHTML}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </main>
+            `;
+        }
+
+        function exportCSV() {
+            let allUsers = JSON.parse(localStorage.getItem('darsana_all_users') || '[]');
+            let csv = "Nama,Kelas,Materi Selesai,Nilai Terbaik Kuis\n";
+            allUsers.forEach(k => {
+                let d = JSON.parse(localStorage.getItem(k));
+                if (d) {
+                    csv += `"${d.name}","${d.cls}",${d.completedModules.length}/${courseData.modules.length},${d.bestQuizScore ?? 'Belum'}\n`;
+                }
+            });
+            let blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            let url = URL.createObjectURL(blob);
+            let a = document.createElement('a');
+            a.setAttribute('href', url);
+            a.setAttribute('download', 'rekap_progres_darsana_siswa.csv');
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
+        // --- NAVIGASI UMUM ---
+        function backToDashboard() {
+            currentScreen = 'dashboard';
+            render();
+        }
+
+        function logout() {
+            currentUser = null;
+            currentClass = null;
+            currentScreen = 'login';
+            render();
+        }
+
+        // Inisialisasi Pertama
+        render();
+    </script>
+</body>
+</html>
